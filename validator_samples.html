@@ -1,0 +1,135 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Bookmark Wheel</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        width:100%;
+        height:200px!important;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      #b_list{
+          background-color:white;
+          width:200px;
+          height:300px;
+          max-height: 300px;
+          /*color:red;*/
+          overflow-y:scroll;
+      }
+	  .i_invalid{
+		background-color:lightpink;
+	  }
+      </style>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+  </head>
+  <body>
+      <div id="standard_input">
+<form id="form_1">
+  <input 
+  id="my_input"
+  name="my_input"
+  type="text" 
+  autocomplete="name"
+  autofocus="true"
+  inputmode="verbatim"
+  pattern="([A-z0-9])+"
+  maxlength="100"
+  minlength="0"
+  spellcheck="true"
+  title="Please only use numbers and letters"
+  />
+  <span id="my_input_error"></span>
+  <div>required Input</div>
+  <input 
+  id="my_input_2"
+  name="my_input"
+  type="text" 
+  autocomplete="name"
+  autofocus="true"
+  inputmode="verbatim"
+  pattern="([A-z0-9])+"
+  maxlength="100"
+  minlength="0"
+  spellcheck="true"
+  title="Please only use numbers and letters"
+  />
+  <span id="my_input_2_error"></span>
+  <div>alphanumeric and underscore - [\\^]|[^A-z|0-9]</div>
+  <input 
+  id="my_input_3"
+  name="my_input"
+  type="text" 
+  autocomplete="tel-national"
+  autofocus="true"
+  inputmode="verbatim"
+  pattern="([A-z0-9])+"
+  maxlength="9"
+  minlength="0"
+  spellcheck="true"
+  title="Please only use numbers and letters"
+  />
+  <span id="my_input_3_error"></span>
+  <div>numeric and hyphen only - [\\^]|[^0-9|-]</div>
+  <input 
+  id="my_input_4"
+  name="my_input"
+  type="text" 
+  autocomplete="email"
+  autofocus="true"
+  inputmode="verbatim"
+  pattern="([A-z0-9])+"
+  maxlength="50"
+  minlength="0"
+  spellcheck="true"
+  title="Please only use numbers and letters"
+  />
+  <span id="my_input_4_error"></span>
+  <div>email address - [\w-\.]+@([\w-]+\.)+[\w-]{2,4}$</div>
+  <input 
+  id="my_input_5"
+  name="my_input"
+  type="text" 
+  autocomplete="email"
+  autofocus="true"
+  inputmode="verbatim"
+  pattern="([A-z0-9])+"
+  maxlength="50"
+  minlength="0"
+  spellcheck="true"
+  title="Please only use numbers and letters"
+  />
+  <span id="my_input_5_error"></span>
+  <div>street address - [\\^]|[^A-z|0-9 ,.]</div>
+  <br/>
+  <input type="button" value="Submit" id="form_1_submit" /><br/>
+ </form>
+</div>
+<br/><br/>
+<div>
+regex examples <br/>
+alphanumeric and underscore - [\^]|[^A-z|0-9]<br/>
+numbers only - ([0-9])+<br/>
+phone number sepperated by periods, spaces, or hyphens <br/>
+([0-9]{3}[-. ][0-9]{3}[-. ][0-9]{4})+
+</div>
+    <script src="validator.js"></script>
+
+  </body>
+</html>
